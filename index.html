@@ -1,52 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Kuch Nahi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #2196f3;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      padding: 50px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d47a1, #1976d2); /* Blue gradient */
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 3em;
+      font-size: 4em;
+      color: #ffffff;
+      text-shadow: 0 0 15px #64b5f6;
       margin-bottom: 10px;
+      animation: pulse 2s infinite;
+      letter-spacing: 2px;
     }
-    h2 {
-      margin-top: 40px;
-      font-size: 2em;
+
+    .coming-soon {
+      background-color: #ffffff;
+      color: #0d47a1;
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      animation: bounce 2s infinite;
     }
-    input, button {
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 15px #64b5f6; }
+      50% { text-shadow: 0 0 30px #90caf9; }
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 50px;
+      color: #e0f7fa;
+    }
+
+    .loader {
+      border: 6px solid #1e88e5;
+      border-top: 6px solid #ffffff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 30px auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    form {
+      margin-top: 30px;
+    }
+
+    input[type="email"] {
       padding: 12px;
-      margin: 10px;
+      width: 250px;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 1em;
+      outline: none;
+      background-color: #1565c0;
+      color: #fff;
+      margin-right: 10px;
     }
-    input[type="email"] {
-      width: 250px;
-    }
+
     button {
-      background-color: #0d47a1;
-      color: white;
+      padding: 12px 20px;
+      background-color: #ffffff;
+      color: #0d47a1;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e3f2fd;
+    }
+
+    @media (max-width: 500px) {
+      input[type="email"] {
+        width: 90%;
+        margin-bottom: 15px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .coming-soon {
+        font-size: 1em;
+        padding: 8px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
   <h1>Kuch Nahi</h1>
-  <h2>🚧 Coming Soon 🚧</h2>
+  <div class="coming-soon">🚀 Coming Soon</div>
+
+  <p>This is just the beginning.<br>The builder is still thinking what to post...<br>
+     Stay in touch — something big is coming!</p>
+
+  <div class="loader"></div>
 
   <form action="https://formspree.io/f/mdkdokog" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required><br>
-    <button type="submit">Enter</button>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Notify Me</button>
   </form>
 
 </body>
