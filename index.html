@@ -1,145 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kuch Nahi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
+      background: linear-gradient(135deg, #003973, #E5E5BE);
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0d47a1, #1976d2); /* Blue gradient */
-      color: #fff;
+      color: white;
       text-align: center;
-      padding: 80px 20px;
     }
-
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4em;
-      color: #ffffff;
-      text-shadow: 0 0 15px #64b5f6;
-      margin-bottom: 10px;
-      animation: pulse 2s infinite;
-      letter-spacing: 2px;
-    }
-
-    .coming-soon {
-      background-color: #ffffff;
-      color: #0d47a1;
-      display: inline-block;
-      padding: 10px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 1.1em;
-      margin-bottom: 30px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 15px #64b5f6; }
-      50% { text-shadow: 0 0 30px #90caf9; }
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 50px;
-      color: #e0f7fa;
-    }
-
-    .loader {
-      border: 6px solid #1e88e5;
-      border-top: 6px solid #ffffff;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      margin: 30px auto;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    form {
       margin-top: 30px;
     }
-
-    input[type="email"] {
-      padding: 12px;
-      width: 250px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      outline: none;
-      background-color: #1565c0;
-      color: #fff;
-      margin-right: 10px;
+    .section {
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
     }
-
     button {
-      padding: 12px 20px;
-      background-color: #ffffff;
-      color: #0d47a1;
-      font-weight: 600;
+      padding: 10px 25px;
+      background-color: #00bcd4;
+      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
-
-    button:hover {
-      background-color: #e3f2fd;
+    input {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 80%;
     }
-
-    @media (max-width: 500px) {
-      input[type="email"] {
-        width: 90%;
-        margin-bottom: 15px;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .coming-soon {
-        font-size: 1em;
-        padding: 8px 20px;
-      }
+    .hidden {
+      display: none;
+    }
+    .blog {
+      text-align: left;
+      padding-left: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Kuch Nahi</h1>
-  <div class="coming-soon">🚀 Coming Soon</div>
+  <h1>🚧 Kuch Nahi is Coming Soon 🚧</h1>
 
-  <p>This is just the beginning.<br>The builder is still thinking what to post...<br>
-     Stay in touch — something big is coming!</p>
+  <!-- Notify Me Section -->
+  <div class="section">
+    <h2>📬 Stay Notified</h2>
+    <form action="https://formspree.io/f/mdkdokog" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required><br>
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
 
-  <div class="loader"></div>
+  <!-- Funny Button Section -->
+  <div class="section">
+    <h2>🎯 The Button That Does Nothing</h2>
+    <button onclick="doNothing()">Click Me</button>
+    <p id="funnyText"></p>
+  </div>
 
-  <form action="https://formspree.io/f/mdkdokog" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Notify Me</button>
-  </form>
+  <!-- Secret Vault -->
+  <div class="section">
+    <h2>🔐 Secret Vault of Kuch Nahi</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="vaultMessage" class="hidden">🎉 You found... absolutely nothing. Congrats.</p>
+  </div>
+
+  <!-- Blog Section -->
+  <div class="section blog">
+    <h2>🧠 Thoughts from the Void</h2>
+    <ul>
+      <li>Why does time feel slow when the Wi-Fi is down?</li>
+      <li>Kya tumne kabhi kuch nahi mehsoos kiya hai?</li>
+      <li>Silence is not empty. It’s full of answers.</li>
+    </ul>
+  </div>
+
+  <!-- Hacker's Corner -->
+  <div class="section">
+    <h2>💻 Hacker's Corner</h2>
+    <p><code>// Welcome to the hidden place.</code></p>
+    <p><code>// While(you.think("it's nothing")) { explore(); }</code></p>
+  </div>
+
+  <script>
+    const funnyLines = [
+      "Still nothing...",
+      "You’ve unlocked boredom level 9000!",
+      "This button exists just to waste your time.",
+      "You clicked it. That’s something.",
+      "Try again. Maybe next time you get something!"
+    ];
+    function doNothing() {
+      const msg = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+      document.getElementById("funnyText").innerText = msg;
+    }
+
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const vaultMsg = document.getElementById("vaultMessage");
+      if (password === "kuchnahi") {
+        vaultMsg.classList.remove("hidden");
+      } else {
+        vaultMsg.innerText = "❌ Wrong password. Try again.";
+        vaultMsg.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuch Nahi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #003973, #E5E5BE);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      margin-top: 30px;
+    }
+    .section {
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    button {
+      padding: 10px 25px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    input {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 80%;
+    }
+    .hidden {
+      display: none;
+    }
+    .blog {
+      text-align: left;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚧 Kuch Nahi is Coming Soon 🚧</h1>
+
+  <!-- Notify Me Section -->
+  <div class="section">
+    <h2>📬 Stay Notified</h2>
+    <form action="https://formspree.io/f/mdkdokog" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required><br>
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
+
+  <!-- Funny Button Section -->
+  <div class="section">
+    <h2>🎯 The Button That Does Nothing</h2>
+    <button onclick="doNothing()">Click Me</button>
+    <p id="funnyText"></p>
+  </div>
+
+  <!-- Secret Vault -->
+  <div class="section">
+    <h2>🔐 Secret Vault of Kuch Nahi</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="vaultMessage" class="hidden">🎉 You found... absolutely nothing. Congrats.</p>
+  </div>
+
+  <!-- Blog Section -->
+  <div class="section blog">
+    <h2>🧠 Thoughts from the Void</h2>
+    <ul>
+      <li>Why does time feel slow when the Wi-Fi is down?</li>
+      <li>Kya tumne kabhi kuch nahi mehsoos kiya hai?</li>
+      <li>Silence is not empty. It’s full of answers.</li>
+    </ul>
+  </div>
+
+  <!-- Hacker's Corner -->
+  <div class="section">
+    <h2>💻 Hacker's Corner</h2>
+    <p><code>// Welcome to the hidden place.</code></p>
+    <p><code>// While(you.think("it's nothing")) { explore(); }</code></p>
+  </div>
+
+  <script>
+    const funnyLines = [
+      "Still nothing...",
+      "You’ve unlocked boredom level 9000!",
+      "This button exists just to waste your time.",
+      "You clicked it. That’s something.",
+      "Try again. Maybe next time you get something!"
+    ];
+    function doNothing() {
+      const msg = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+      document.getElementById("funnyText").innerText = msg;
+    }
+
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const vaultMsg = document.getElementById("vaultMessage");
+      if (password === "kuchnahi") {
+        vaultMsg.classList.remove("hidden");
+      } else {
+        vaultMsg.innerText = "❌ Wrong password. Try again.";
+        vaultMsg.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuch Nahi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #003973, #E5E5BE);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      margin-top: 30px;
+    }
+    .section {
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    button {
+      padding: 10px 25px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    input {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 80%;
+    }
+    .hidden {
+      display: none;
+    }
+    .blog {
+      text-align: left;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚧 Kuch Nahi is Coming Soon 🚧</h1>
+
+  <!-- Notify Me Section -->
+  <div class="section">
+    <h2>📬 Stay Notified</h2>
+    <form action="https://formspree.io/f/mdkdokog" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required><br>
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
+
+  <!-- Funny Button Section -->
+  <div class="section">
+    <h2>🎯 The Button That Does Nothing</h2>
+    <button onclick="doNothing()">Click Me</button>
+    <p id="funnyText"></p>
+  </div>
+
+  <!-- Secret Vault -->
+  <div class="section">
+    <h2>🔐 Secret Vault of Kuch Nahi</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="vaultMessage" class="hidden">🎉 You found... absolutely nothing. Congrats.</p>
+  </div>
+
+  <!-- Blog Section -->
+  <div class="section blog">
+    <h2>🧠 Thoughts from the Void</h2>
+    <ul>
+      <li>Why does time feel slow when the Wi-Fi is down?</li>
+      <li>Kya tumne kabhi kuch nahi mehsoos kiya hai?</li>
+      <li>Silence is not empty. It’s full of answers.</li>
+    </ul>
+  </div>
+
+  <!-- Hacker's Corner -->
+  <div class="section">
+    <h2>💻 Hacker's Corner</h2>
+    <p><code>// Welcome to the hidden place.</code></p>
+    <p><code>// While(you.think("it's nothing")) { explore(); }</code></p>
+  </div>
+
+  <script>
+    const funnyLines = [
+      "Still nothing...",
+      "You’ve unlocked boredom level 9000!",
+      "This button exists just to waste your time.",
+      "You clicked it. That’s something.",
+      "Try again. Maybe next time you get something!"
+    ];
+    function doNothing() {
+      const msg = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+      document.getElementById("funnyText").innerText = msg;
+    }
+
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const vaultMsg = document.getElementById("vaultMessage");
+      if (password === "kuchnahi") {
+        vaultMsg.classList.remove("hidden");
+      } else {
+        vaultMsg.innerText = "❌ Wrong password. Try again.";
+        vaultMsg.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuch Nahi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #003973, #E5E5BE);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      margin-top: 30px;
+    }
+    .section {
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    button {
+      padding: 10px 25px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    input {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 80%;
+    }
+    .hidden {
+      display: none;
+    }
+    .blog {
+      text-align: left;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚧 Kuch Nahi is Coming Soon 🚧</h1>
+
+  <!-- Notify Me Section -->
+  <div class="section">
+    <h2>📬 Stay Notified</h2>
+    <form action="https://formspree.io/f/mdkdokog" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required><br>
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
+
+  <!-- Funny Button Section -->
+  <div class="section">
+    <h2>🎯 The Button That Does Nothing</h2>
+    <button onclick="doNothing()">Click Me</button>
+    <p id="funnyText"></p>
+  </div>
+
+  <!-- Secret Vault -->
+  <div class="section">
+    <h2>🔐 Secret Vault of Kuch Nahi</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="vaultMessage" class="hidden">🎉 You found... absolutely nothing. Congrats.</p>
+  </div>
+
+  <!-- Blog Section -->
+  <div class="section blog">
+    <h2>🧠 Thoughts from the Void</h2>
+    <ul>
+      <li>Why does time feel slow when the Wi-Fi is down?</li>
+      <li>Kya tumne kabhi kuch nahi mehsoos kiya hai?</li>
+      <li>Silence is not empty. It’s full of answers.</li>
+    </ul>
+  </div>
+
+  <!-- Hacker's Corner -->
+  <div class="section">
+    <h2>💻 Hacker's Corner</h2>
+    <p><code>// Welcome to the hidden place.</code></p>
+    <p><code>// While(you.think("it's nothing")) { explore(); }</code></p>
+  </div>
+
+  <script>
+    const funnyLines = [
+      "Still nothing...",
+      "You’ve unlocked boredom level 9000!",
+      "This button exists just to waste your time.",
+      "You clicked it. That’s something.",
+      "Try again. Maybe next time you get something!"
+    ];
+    function doNothing() {
+      const msg = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+      document.getElementById("funnyText").innerText = msg;
+    }
+
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const vaultMsg = document.getElementById("vaultMessage");
+      if (password === "kuchnahi") {
+        vaultMsg.classList.remove("hidden");
+      } else {
+        vaultMsg.innerText = "❌ Wrong password. Try again.";
+        vaultMsg.classList.remove("hidden");
+      }
+    }
+  </script>
 
 </body>
 </html>
