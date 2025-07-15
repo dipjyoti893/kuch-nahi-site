@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +6,10 @@
   <title>Kuch Nahi</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0d47a1, #1976d2); /* Blue gradient */
+      background: linear-gradient(135deg, #0d47a1, #1976d2);
       color: #fff;
       text-align: center;
       padding: 80px 20px;
@@ -41,20 +37,6 @@
       animation: bounce 2s infinite;
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 15px #64b5f6; }
-      50% { text-shadow: 0 0 30px #90caf9; }
-    }
-
     p {
       font-size: 1.2em;
       margin-bottom: 50px;
@@ -71,16 +53,8 @@
       animation: spin 1s linear infinite;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    form {
-      margin-top: 30px;
-    }
-
-    input[type="email"] {
+    input[type="email"],
+    input[type="password"] {
       padding: 12px;
       width: 250px;
       border: none;
@@ -89,7 +63,7 @@
       outline: none;
       background-color: #1565c0;
       color: #fff;
-      margin-right: 10px;
+      margin-bottom: 15px;
     }
 
     button {
@@ -107,21 +81,41 @@
       background-color: #e3f2fd;
     }
 
+    .mystery-message {
+      display: none;
+      margin-top: 40px;
+      font-size: 1.3em;
+      color: #ffee58;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 15px #64b5f6; }
+      50% { text-shadow: 0 0 30px #90caf9; }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 500px) {
-      input[type="email"] {
+      input[type="email"], input[type="password"] {
         width: 90%;
-        margin-bottom: 15px;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .coming-soon {
-        font-size: 1em;
-        padding: 8px 20px;
       }
     }
   </style>
@@ -136,10 +130,35 @@
 
   <div class="loader"></div>
 
-  <form action="https://formspree.io/f/mdkdokog" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required>
+  <form id="notify-form">
+    <input type="email" name="email" placeholder="Enter your email" required><br>
+    <input type="password" name="password" placeholder="Enter your password" required><br>
     <button type="submit">Notify Me</button>
   </form>
+
+  <div id="mystery" class="mystery-message">
+    👁️‍🗨️ You’ve stepped into the unknown. Stay tuned...
+  </div>
+
+  <script>
+    const form = document.getElementById("notify-form");
+    const mystery = document.getElementById("mystery");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // prevent actual submission (for now)
+
+      // Optional: Send to Formspree
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      // Hide form and show the mystery message
+      form.style.display = "none";
+      mystery.style.display = "block";
+    });
+  </script>
 
 </body>
 </html>
